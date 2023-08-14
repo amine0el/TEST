@@ -1,0 +1,142 @@
+
+deep-sea-treasure:
+  name: deep-sea-treasure
+  action_space: discrete
+  state_space: discrete
+  rm_size: 16000
+  dim_out: 4
+  n_obj: 2
+  dim_state: 2
+  img_size:
+  max_steps: 30
+fishwood:
+  name: fishwood
+  action_space: discrete
+  state_space: discrete
+  utopia: [ 33,190 ]
+  dystopia: [ 0, 0 ]
+  rm_size: 16000
+  dim_out: 2
+  n_obj: 2
+  dim_state: 1
+  img_size:
+  max_steps: 200
+highway:
+  name: highway
+  action_space: discrete
+  state_space: continuous
+  rm_size: 16000
+  dim_out: 2
+  n_obj: 3
+  dim_state: 1
+  img_size:
+  max_steps: 200
+mountaincar:
+  name: mountaincar
+  action_space: discrete
+  state_space: continuous
+  rm_size: 16000
+  dim_out: 3
+  n_obj: 2
+  dim_state: 2
+  img_size:
+  max_steps: 200
+breakable-bottles:
+  name: breakable-bottles
+  action_space: discrete
+  state_space: discrete
+  rm_size: 16000
+  dim_out: 2
+  n_obj: 3
+  dim_state: 6
+  img_size:
+  max_steps: 50
+water-reservoir:
+  name: water-reservoir
+  action_space: continuous
+  state_space: continuous
+  rm_size: 16000
+  dim_out: 1
+  n_obj: 2
+  dim_state: 1
+  img_size:
+  max_steps: 500
+halfcheetah:
+  name: halfcheetah
+  action_space: continuous
+  state_space: continuous
+  utopia: [ 1000, 2 ]
+  dystopia: [ -10, -400 ]
+  rm_size: 50000
+  dim_out: 6
+  n_obj: 2
+  dim_state: 17
+  img_size:
+  max_steps: 1000
+so_pole:
+  name: so_pole
+  action_space: discrete
+  state_space: continuous
+  utopia: [ 0 ]
+  dystopia: [ -10 ]
+  rm_size: 16000
+  dim_out: 2
+  n_obj: 1
+  dim_state: 4
+  img_size:
+  max_steps: 200
+so_pendulum:
+  name: so_pendulum
+  action_space: continuous
+  state_space: continuous
+  rm_size: 16000
+  dim_out: 1
+  n_obj: 1
+  dim_state: 4
+  img_size:
+  max_steps: 1000
+mo-supermario:
+  name: mo-supermario
+  action_space: discrete
+  state_space: image
+  mlp: nn_mm
+  cnn: mm
+  rm_size: 12000
+  dim_out: 7
+  n_obj: 5
+  # dim_state: 4
+  channels: 4
+  dim_state: [ 4, 84, 84 ]
+  frames_per_state: 4
+  utopia: [ 10,10,10 10,10 ]
+  dystopia: [ 0,0,0 0,0 ]
+  max_steps: 1000
+  single_stage: False
+  life_done: True
+  actor_critic: True
+minecart:
+  name: minecart
+  action_space: discrete
+  state_space: continuous
+  rm_size: 40000
+  dim_out: 6
+  n_obj: 2
+  utopia: [ 3, 3]
+  dystopia: [-1, -1]
+  channels: 2
+  dim_state: 7
+  max_steps: 400
+so_minecart:
+  name: so_minecart
+  action_space: discrete
+  state_space: continuous
+  rm_size: 40000
+  dim_out: 6
+  n_obj: 1
+  # utopia: [ 5,5 ]
+  # dystopia: [-1 ,-1 ]
+  utopia: [ 5 ]
+  dystopia: [ -1 ]
+  channels: 2
+  dim_state: 7
+  max_steps: 400

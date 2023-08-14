@@ -1,0 +1,28 @@
+batch_size: 64
+clip_gradient: false
+criterion:
+env:
+env_config: ./configs/env_config.yml
+eval_freq: 1000
+gamma: 0.999
+img_input: false
+log_model: true
+lr: 0.0001
+model_type: sac
+n_envs: 2
+n_prefs_eval: 32
+n_prefs_train: 16
+name: test
+rel_replay: false
+render: false
+normalize_rewards: true
+reward_temperature: 0.3
+epsilon: 1.0
+epsilon_decay: 0.998
+epsilon_min: 0.1
+sample_alpha: 1.0
+seed: 0
+training_steps: 100000
+update_freq: 2
+use_gpu_acceleration: true
+warm_up_steps: 1024

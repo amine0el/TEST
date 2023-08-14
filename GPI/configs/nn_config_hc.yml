@@ -1,0 +1,35 @@
+#cnn:
+#- act: lrelu
+#  batch_norm: true
+#  bias: false
+#  block: basic_cnn
+#  kernel: 3
+#  padding: 1
+#  pooling: 1
+#  size: 32
+#  stride: 2
+#- act: lrelu
+#  batch_norm: true
+#  bias: false
+#  block: basic_cnn
+#  kernel: 3
+#  padding: 1
+#  pooling: 1
+#  size: 32
+#  stride: 2
+#- act: lrelu
+#  batch_norm: true
+#  bias: false
+#  block: basic_cnn
+#  kernel: 3
+#  padding: 1
+#  pooling: 1
+#  size: 32
+#  stride: 2
+mlp:
+- act: lrelu
+  size: 512
+- act: lrelu
+  size: 512
+- act: lrelu
+  size: 256
