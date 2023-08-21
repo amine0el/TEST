@@ -13,15 +13,19 @@ def collect_data_from_directory(directory):
     # Read and store data from each CSV file
     for csv_file in csv_files:
         csv_path = os.path.join(directory, csv_file)
-        data = pd.read_csv(csv_path)
+        data = pd.read_csv(csv_path, header=None, names=['x', 'timestamp', 'y'])
         all_data.append(data['y'])
 
     # Concatenate data from all CSV files and calculate mean and standard deviation
     concatenated_data = pd.concat(all_data, axis=1)
     mean = concatenated_data.mean(axis=1)
     std = concatenated_data.std(axis=1)
-
-    return data['x'], mean, std
+    if "modqn" in directory or "mosac" in directory:
+        return data['x'][1:49], mean[1:49], std[1:49]
+    elif "pql" in directory:
+        return data['x'][:48], mean[:48], std[:48]
+    else:
+        return data['x'][:50], mean[:50], std[:50]
 
 # Main function to traverse through directories, collect data, and plot
 # Main function to traverse through directories, collect data, and plot
@@ -46,10 +50,12 @@ def main(root_directory):
         plt.plot(x_vals[i], mean_vals[i], label=directory_names[i])  # Use directory name as label
         plt.fill_between(x_vals[i], mean_vals[i] - std_vals[i], mean_vals[i] + std_vals[i], alpha=0.3)
 
-    plt.xlabel('X-axis')
-    plt.ylabel('Y-axis')
+    plt.xlabel('step')
+    plt.ylabel('value')
     plt.title('Hypervolume')
+    plt.grid(True)
     plt.legend()
+    plt.savefig('plots/Hypervolume.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 if __name__ == "__main__":

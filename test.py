@@ -1,4 +1,5 @@
 import array
+from matplotlib import pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -134,11 +135,30 @@ def get_wfront(n=32):
 
 
 if __name__ == '__main__':
-    #eval_w = get_eval_w(32, 2)
+    eval_w = get_eval_w(2**20, 2)
     rewards = np.array([[0.7, -1],[8.2,-3],[11.5,-5],[14,-7],[15.1,-8],[16.1,-9],[19.6,-13],[20.3,-14],[22.4,-17],[23.7,-19]])
-    evalw, returns, horizons = get_wfront(32)
-    df = [[evalw[x],horizons[x],returns[x]] for x in range(len(returns))]
-    df = pd.DataFrame()
+    w_front = calc_opt_reward(eval_w, rewards)
+    for w in w_front:
+        w[0] = tuple(w[0])
+        w[1] = tuple(w[1])
+
+    # evalw, returns, horizons = get_wfront(32)
+    # df = [[evalw[x],horizons[x],returns[x]] for x in range(len(returns))]
+    df = pd.DataFrame(w_front, columns=['eval_w','rewards'])
+    pivot_table = pd.pivot_table(df, index='rewards', values='eval_w', aggfunc=['count', 'max', 'min'])
+
+    # Calculate the total count for each group
+    total_count = pivot_table[('count', 'eval_w')].sum()
+
+    # Calculate the percentage column
+    pivot_table[('percentage', 'eval_w')] = (pivot_table[('count', 'eval_w')] / total_count) * 100
+
+    print(pivot_table)
+
+    rew = pd.DataFrame(rewards, columns=['r1','r2'])
+    rew.to_csv('rewards.csv')
+
+    pivot_table.to_csv('w_front_pivot.csv')
     df.to_csv('mmm_front.csv')
 
     # rewards_1 = []
