@@ -50,14 +50,14 @@ def main(root_directory):
         plt.plot(x_vals[i], mean_vals[i], label=directory_names[i])  # Use directory name as label
         plt.fill_between(x_vals[i], mean_vals[i] - std_vals[i], mean_vals[i] + std_vals[i], alpha=0.3)
 
-    plt.xlabel('step')
-    plt.ylabel('value')
-    plt.title('Hypervolume')
+    plt.xlabel('step', fontsize=14)
+    plt.ylabel('value', fontsize=14)
+    plt.title('Expected Utility Loss', fontsize=16)
     plt.grid(True)
     plt.legend()
-    plt.savefig('plots/Hypervolume.png', dpi=300, bbox_inches='tight')
+    plt.savefig('plots/Prefloss.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 if __name__ == "__main__":
-    root_dir = "/Users/amineelblidi/Documents/Bachlor vorbereitung/code/TEST/data/Hypervolume"
+    root_dir = "/Users/amineelblidi/Documents/Bachlor vorbereitung/code/TEST/data/Prefloss"
     main(root_dir)
